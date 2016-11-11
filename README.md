@@ -1,8 +1,11 @@
 # docker-shadowsocks
-Shadowsocks dockerfile from alpine linux.
 
-You can use this dockerfile to build a docker image for shadowsocks based on
-[alpine](https://alpinelinux.org/) linux distribution.
+
+Build a tiny docker image (compressed ~ 16MB) for shadowsocks based on [alpine](https://alpinelinux.org/)
+linux distribution.
+
+
+## Usage
 
 Pull the latest version from [docker hub](https://hub.docker.com/r/ggicci/shadowsocks/):
 
