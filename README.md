@@ -2,7 +2,7 @@
 
 
 Build a tiny docker image (compressed ~ 16MB) for shadowsocks based on [alpine](https://alpinelinux.org/)
-linux distribution.
+linux. The versions of this dockerfile follows shadowsocks [releases](https://github.com/shadowsocks/shadowsocks/releases).
 
 
 ## Usage
