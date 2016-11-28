@@ -1,15 +1,15 @@
 FROM alpine:latest
 MAINTAINER ggicci <ggicci@163.com>
 
-RUN apk add --no-cache --update ca-certificates wget python py-setuptools && update-ca-certificates
+RUN apk add --no-cache ca-certificates python py-setuptools
+RUN apk add --no-cache --virtual .build-deps \
+    wget \
+  \
+  && wget "https://github.com/shadowsocks/shadowsocks/archive/2.9.0.tar.gz" -O shadowsocks.tar.gz \
+  && tar -C /usr/local -xzf shadowsocks.tar.gz \
+  && rm shadowsocks.tar.gz \
+  && cd /usr/local/shadowsocks-2.9.0 \
+  && python setup.py install \
+  && apk del .build-deps
 
-WORKDIR /src
-RUN wget "https://github.com/shadowsocks/shadowsocks/archive/2.9.0.tar.gz" -O shadowsocks.tar.gz \
-  && tar zxf shadowsocks.tar.gz \
-  && mv shadowsocks-2.9.0 /shadowsocks \
-  && rm shadowsocks.tar.gz
-
-WORKDIR /shadowsocks
-RUN python setup.py install
-
-ENTRYPOINT ["/usr/bin/ssserver"]
+ENTRYPOINT ["ssserver"]
